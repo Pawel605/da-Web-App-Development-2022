@@ -3,18 +3,20 @@ import { Fragment } from "react";
 
 import { NextPageWithLayout } from "~/types/common.types";
 
+import playlistData from "~/data/playlistsData.json";
 import Layout from "~/components/Layout/Layout.component";
+import Main from "../views/Main/Main.view";
 
 const Home: NextPageWithLayout = () => {
   return (
     <Fragment>
       <Head>
-        <title>DaftAcademy - Web-App-Development-2022</title>
+        <title>DaftAcademy - WebApp 2022</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div>
-        <h1>DaftAcademy - Web-App-Development-2022</h1>
+        <Main items={playlistData} />
       </div>
     </Fragment>
   );
