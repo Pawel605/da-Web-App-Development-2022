@@ -3,11 +3,11 @@ import usePlayer from "~/hooks/usePlayer.hook";
 import trackData from "~/data/trackData.json";
 
 import styles from "./Player.module.css";
-import PlayButton from "../PlayButton/PlayButton.component";
-import PauseButton from "../PauseButton/PauseButton.component";
-import ProgressBar from "../ProgressBar/ProgressBar.component";
-import TimeDisplay from '../TimeDisplay/TimeDisplay.component';
-import VolumeButton from '../VolumeButton/VolumeButton.component';
+import PlayButton from "./components/PlayButton/PlayButton.component";
+import PauseButton from "./components/PauseButton/PauseButton.component";
+import ProgressBar from "./components/ProgressBar/ProgressBar.component";
+import TimeDisplay from './components/TimeDisplay/TimeDisplay.component';
+import VolumeButton from './components/VolumeButton/VolumeButton.component';
 
 const Player = () => {
   const { state, actions } = usePlayer()
