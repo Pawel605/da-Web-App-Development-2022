@@ -49,6 +49,7 @@ const initialPlayerState: State = {
   currentTime: 0,
   progress: 0,
   duration: 0,
+  volume: 100,
 };
 
 const reducer = (state: State, action: Action): State => {
