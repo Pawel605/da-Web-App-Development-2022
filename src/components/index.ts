@@ -7,3 +7,7 @@ export { default as Player } from  "./Player/Player.component";
 export { default as Sidebar } from  "./Sidebar/Sidebar.component";
 export { default as User } from  "./User/User.component";
 export { default as ProgressBar } from  "./ProgressBar/ProgressBar.component";
+export { default as PlayButton } from  "./PlayButton/PlayButton.component";
+export { default as PauseButton } from  "./PauseButton/PauseButton.component";
+export { default as TimeDisplay } from  "./TimeDisplay/TimeDisplay.component";
+export { default as VolumeButton } from  "./VolumeButton/VolumeButton.component";

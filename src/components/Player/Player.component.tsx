@@ -6,9 +6,12 @@ import styles from "./Player.module.css";
 import PlayButton from "../PlayButton/PlayButton.component";
 import PauseButton from "../PauseButton/PauseButton.component";
 import ProgressBar from "../ProgressBar/ProgressBar.component";
+import TimeDisplay from '../TimeDisplay/TimeDisplay.component';
+import VolumeButton from '../VolumeButton/VolumeButton.component';
 
 const Player = () => {
   const { state, actions } = usePlayer()
+
   return (
     <div className={styles.root}>
        <div className={styles.player}>
@@ -22,7 +25,13 @@ const Player = () => {
             artists: trackData.artists.map(artist => artist.name)
            })} />
         )}
+
+         <p>{state.meta?.name ?? "Tytuł"}</p>
          <ProgressBar progress={state.progress}/>
+         <p>{state.meta?.artists ?? "Artysta"}</p>
+
+         <TimeDisplay currentTime={state.currentTime} duration={state.duration}/>
+         <VolumeButton muted={state.volume === 0} onClick={() => actions.mute(state.volume === 0 ? 1 : 0)} />
        </div>
     </div>
   );

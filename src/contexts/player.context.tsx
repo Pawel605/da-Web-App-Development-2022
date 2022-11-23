@@ -16,6 +16,9 @@ type Action = {
 } | {
   type: "SET_DURATION"
   payload: number
+} | {
+  type: "MUTE";
+  payload: number;
 }
 
 type Meta = {
@@ -31,12 +34,14 @@ type State = {
   currentTime: number;
   progress: number;
   duration: number;
+  volume: number;
 }
 
 type Actions = {
   play: (meta?: Meta) => void;
   pause: () => void;
   seek: (time: number) => void;
+  mute: (volume: number) => void;
 }
 
 const initialPlayerState: State = {
@@ -78,6 +83,13 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         duration: action.payload,
+      };
+    }
+
+    case "MUTE": {
+      return {
+        ...state,
+        volume: action.payload,
       };
     }
 
@@ -123,6 +135,11 @@ const PlayerProvider = (props: React.PropsWithChildren) => {
           playerRef.current.currentTime = time;
         }
       },
+      mute: (volume: number) => {
+        if (playerRef.current) {
+          playerRef.current.volume = volume;
+        }
+      },
     }),
     []
   );
@@ -155,6 +172,14 @@ const PlayerProvider = (props: React.PropsWithChildren) => {
             dispatch({
               type: "SET_DURATION",
               payload: Math.floor(playerRef.current.duration),
+            });
+          }
+        }}
+        onVolumeChange={() => {
+          if (playerRef.current) {
+            dispatch({
+              type: "MUTE",
+              payload: playerRef.current.volume
             });
           }
         }}
